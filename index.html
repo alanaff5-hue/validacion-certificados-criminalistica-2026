@@ -8,6 +8,7 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center p-4 font-sans">
 
+    <!-- Tarjeta de Resultado (Oculta por defecto) -->
     <div class="max-w-md w-full bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden hidden" id="card-resultado">
         <div class="bg-slate-800 text-white text-center p-5 border-b border-slate-700">
             <h1 class="text-sm font-bold uppercase tracking-wider text-slate-300">Gendarmería Nacional Argentina</h1>
@@ -17,49 +18,37 @@
         <div class="p-6 space-y-5">
             <div class="flex items-center justify-center space-x-2 text-emerald-600 font-semibold bg-emerald-50 py-2 px-4 rounded-full w-fit mx-auto text-sm border border-emerald-200">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                <span>CERTIFICADO VÁLIDO</span>
+                <span>SISTEMA DE VALIDACIÓN OFICIAL</span>
             </div>
 
-            <div class="border-t border-b border-gray-100 py-4 space-y-3">
-                <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">Jerarquía / Grado</label>
-                    <p class="text-sm font-semibold text-gray-800" id="cert-grado">-</p>
-                </div>
-                <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">Nombre Completo</label>
-                    <p class="text-base font-bold text-gray-900" id="cert-nombre">-</p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">MI / DNI</label>
-                        <p class="text-sm font-medium text-gray-800" id="cert-mi">-</p>
-                    </div>
-                    <div>
-                        <label class="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">C.E.</label>
-                        <p class="text-sm font-medium text-gray-800" id="cert-ce">-</p>
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-[10px] uppercase font-bold text-gray-400 tracking-wider">Condición</label>
-                    <span class="inline-block mt-1 text-xs font-bold uppercase tracking-wide bg-blue-100 text-blue-800 px-2.5 py-0.5 rounded" id="cert-calidad">-</span>
-                </div>
+            <!-- Estructura de visualización requerida -->
+            <div class="border-t border-b border-gray-100 py-4 space-y-2 text-center">
+                <p class="text-gray-600 font-medium text-sm">JERARQUÍA: <span id="cert-grado" class="font-bold text-gray-900">-</span></p>
+                <p class="text-lg font-black text-gray-950 tracking-wide uppercase" id="cert-nombre">-</p>
+                <p class="text-gray-600 font-medium text-sm">MI: <span id="cert-mi" class="font-bold text-gray-900">-</span> - CE: <span id="cert-ce" class="font-bold text-gray-900">-</span></p>
+                <p class="text-gray-600 font-medium text-sm">CALIDAD: <span id="cert-calidad" class="font-bold text-blue-700 uppercase">-</span></p>
             </div>
 
-            <div class="bg-gray-50 p-4 rounded-lg text-xs space-y-2 text-gray-600 border border-gray-100">
-                <p class="font-bold text-gray-700 uppercase text-[11px]">Evento Académico:</p>
-                <p class="italic leading-relaxed">"JORNADA CAPACITACIÓN 86° ANIVERSARIO DE LA CREACIÓN DE LA ESPECIALIDAD CRIMINALÍSTICA Y ESTUDIOS FORENSES"</p>
-                <div class="pt-2 border-t border-gray-200 flex justify-between text-[10px] text-gray-400 font-mono">
-                    <span>ID: <strong id="cert-id" class="text-gray-600"></strong></span>
-                    <span>AÑO: 2026</span>
+            <!-- Detalles del Evento -->
+            <div class="bg-gray-50 p-4 rounded-lg text-xs space-y-2 text-center text-gray-600 border border-gray-100">
+                <p class="font-bold text-gray-800 tracking-wide leading-relaxed">
+                    JORNADA CAPACITACIÓN 86° ANIVERSARIO DE LA CREACIÓN DE LA ESPECIALIDAD CRIMINALÍSTICA Y ESTUDIOS FORENSES
+                </p>
+                <p class="text-gray-500 font-semibold uppercase text-[10px] pt-1">
+                    JEFATURA DE REGIÓN VII
+                </p>
+                <div class="pt-3 border-t border-gray-200 text-center text-[10px] text-gray-400 font-mono">
+                    <span>ID DE CONTROL: <strong id="cert-id" class="text-gray-600"></strong></span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Estados de Carga y Errores -->
     <div id="status-message" class="text-center p-6 bg-white rounded-xl shadow-md max-w-sm w-full border border-gray-200">
         <div class="animate-pulse flex flex-col items-center space-y-2" id="loading-state">
             <div class="w-8 h-8 border-4 border-slate-800 border-t-transparent rounded-full animate-spin"></div>
-            <p class="text-sm text-gray-500 font-medium">Validando credencial en el sistema...</p>
+            <p class="text-sm text-gray-500 font-medium">Validando autenticidad de la credencial...</p>
         </div>
         <p id="error-text" class="text-sm font-semibold text-red-600 hidden"></p>
     </div>
