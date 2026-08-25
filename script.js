@@ -8,22 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const errorText = document.getElementById('error-text');
 
     if (!certId) {
-        mostrarError("Error: No se proporcionó ningún identificador de certificado.");
+        mostrarError("Error: Código de validación ausente en el escaneo.");
         return;
     }
 
-    // Consulta la base de datos local JSON
+    // Consulta la base de datos estática datos.json
     fetch('datos.json')
         .then(response => {
-            if (!response.ok) throw new Error("No se pudo cargar la base de datos.");
+            if (!response.ok) throw new Error("No se pudo conectar con la base de datos de credenciales.");
             return response.json();
         })
         .then(data => {
-            // Normalizar ID para la búsqueda
-            const registro = data.find(item => item.id.toUpperCase() === certId.toUpperCase());
+            // Normaliza la búsqueda para prevenir errores de mayúsculas/minúsculas
+            const registro = data.find(item => item.id.trim().toUpperCase() === certId.trim().toUpperCase());
 
             if (registro) {
-                // Inyectar datos en el DOM
+                // Inyección de datos en la tarjeta
                 document.getElementById('cert-id').textContent = registro.id;
                 document.getElementById('cert-grado').textContent = registro.grado;
                 document.getElementById('cert-nombre').textContent = registro.nombre;
@@ -31,16 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 document.getElementById('cert-ce').textContent = registro.ce;
                 document.getElementById('cert-calidad').textContent = registro.calidad;
 
-                // Renderizar interfaz
+                // Muestra la tarjeta con los datos
                 statusMessage.classList.add('hidden');
                 cardResultado.classList.remove('hidden');
             } else {
-                mostrarError(`El certificado con ID ${certId} no se encuentra registrado o no es válido.`);
+                mostrarError(`La credencial de control [${certId}] no pertenece a un certificado registrado.`);
             }
         })
         .catch(error => {
             console.error(error);
-            mostrarError("Error interno al verificar el certificado. Intente más tarde.");
+            mostrarError("Error de comunicación interna al verificar la credencial.");
         });
 
     function mostrarError(mensaje) {
