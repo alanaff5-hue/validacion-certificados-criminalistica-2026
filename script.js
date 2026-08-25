@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // Consulta la base de datos estática datos.json
-    fetch('datos.json')
+    fetch('datos.json?v=' + new Date().getTime())
         .then(response => {
             if (!response.ok) throw new Error("No se pudo conectar con la base de datos de credenciales.");
             return response.json();
