@@ -1,3 +1,4 @@
+[
   { "id": "CRIM-2026-001", "grado": "2DO CTE", "nombre": "ESCOBAR LUIS ALBERTO", "mi": "32.465.219", "ce": "73.955", "calidad": "DISERTANTE" },
   { "id": "CRIM-2026-002", "grado": "1ER ALF", "nombre": "SERGIO ANDRÉS BENAVENTE BRANDAN", "mi": "35.556.927", "ce": "80.684", "calidad": "DISERTANTE" },
   { "id": "CRIM-2026-003", "grado": "1ER ALF", "nombre": "ÁLVAREZ BARBOZA, MARIANA", "mi": "32.470.826", "ce": "100.553", "calidad": "DISERTANTE" },
@@ -86,3 +87,4 @@
   { "id": "CRIM-2026-086", "grado": "CBO (COMIS)", "nombre": "CUEVAS AGUSTÍN TOMAS", "mi": "45.371.249", "ce": "111.005", "calidad": "PARTICIPANTE" },
   { "id": "CRIM-2026-087", "grado": "CTE MY", "nombre": "ARIEL SINDULFO SOLAR", "mi": "21.811.954", "ce": "61.473", "calidad": "PARTICIPANTE" },
   { "id": "CRIM-2026-088", "grado": "CTE MY", "nombre": "JUAN CARLOS CARRIZO", "mi": "21.315.860", "ce": "59.439", "calidad": "PARTICIPANTE" }
+]
